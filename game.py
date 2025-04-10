@@ -72,7 +72,14 @@ class Game:
 def main():
     print("Welcome to Janken! (Scissors Paper Rock)")
     player_name = input("Enter your name: ").strip() or "Player"
-    rounds = int(input("How many rounds would you like to play? "))
+    while True:
+        try:
+            rounds = int(input("How many rounds would you like to play? "))
+            if rounds > 0:
+                break
+            print("Please enter a positive number.")
+        except ValueError:
+            print("Please enter a valid number.")
 
     human = Player(player_name, HumanMover())
     computer = Player("Computer", ComputerMover())
